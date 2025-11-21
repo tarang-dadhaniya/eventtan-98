@@ -971,10 +971,12 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                 <!-- Features Grid -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-4 md:gap-6 mb-6">
                   <!-- Schedule - Active -->
-                  <button
-                    (click)="toggleFeature('schedule')"
+                  <div
+                    draggable="true"
+                    (dragstart)="onDragStartFeature($event, 'schedule')"
+                    (dragend)="onDragEndFeature($event)"
                     [class.feature-active]="isFeatureActive('schedule')"
-                    class="feature-card group flex flex-col items-center gap-2 p-4 rounded border border-[#049AD0] shadow-sm transition-all hover:shadow-md"
+                    class="feature-card group flex flex-col items-center gap-2 p-4 rounded border border-[#049AD0] shadow-sm transition-all hover:shadow-md cursor-grab active:cursor-grabbing"
                   >
                     <div class="relative w-full">
                       <svg
