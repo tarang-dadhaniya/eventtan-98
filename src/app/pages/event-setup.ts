@@ -1118,6 +1118,7 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       'border-[#CED4DA] bg-white': !isDragOverSelected,
                       'border-[#049AD0] bg-[#E8F4F8]': isDragOverSelected,
                     }"
+                    style="min-height: 150px;"
                     (dragover)="onDragOverSelected($event)"
                     (drop)="onDropSelected($event)"
                     (dragleave)="onDragLeaveSelected($event)"
@@ -1125,7 +1126,6 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                     <!-- Selected Feature Cards -->
                     <div
                       class="flex flex-wrap gap-6"
-                      *ngIf="activeFeatures.length > 0"
                       (dragover)="onDragOver($event)"
                       (drop)="onDrop($event)"
                       (dragleave)="onDragLeave($event)"
