@@ -166,48 +166,58 @@ import { FormsModule } from "@angular/forms";
             </div>
 
             <!-- Type Radio Buttons -->
-            <div class="flex gap-6">
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="radio"
-                  name="type"
-                  value="Standard"
-                  [(ngModel)]="formData.type"
-                  class="w-5 h-5 border border-[#CED4DA] text-[#049AD0] focus:ring-[#049AD0]"
-                />
+            <div class="flex items-center gap-8">
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <div class="relative flex items-center justify-center">
+                  <input
+                    type="radio"
+                    name="type"
+                    value="Standard"
+                    [(ngModel)]="formData.type"
+                    class="appearance-none w-5 h-5 border border-[#CED4DA] rounded-full bg-[#FEFEFE] cursor-pointer checked:border-[#CED4DA] peer"
+                  />
+                  <div
+                    class="absolute w-2.5 h-2.5 rounded-full bg-[#049AD0] opacity-0 peer-checked:opacity-100 pointer-events-none"
+                  ></div>
+                </div>
                 <span class="text-base font-medium text-[#212529]"
                   >Standard</span
                 >
               </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="radio"
-                  name="type"
-                  value="External"
-                  [(ngModel)]="formData.type"
-                  class="w-5 h-5 border border-[#CED4DA] text-[#049AD0] focus:ring-[#049AD0]"
-                />
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <div class="relative flex items-center justify-center">
+                  <input
+                    type="radio"
+                    name="type"
+                    value="External"
+                    [(ngModel)]="formData.type"
+                    class="appearance-none w-5 h-5 border border-[#CED4DA] rounded-full bg-[#FEFEFE] cursor-pointer checked:border-[#CED4DA] peer"
+                  />
+                  <div
+                    class="absolute w-2.5 h-2.5 rounded-full bg-[#049AD0] opacity-0 peer-checked:opacity-100 pointer-events-none"
+                  ></div>
+                </div>
                 <span class="text-base font-medium text-[#212529]"
                   >External</span
                 >
               </label>
             </div>
 
-            <!-- Description Field -->
-            <div>
+            <!-- URL Field (shown only for External type) -->
+            <div *ngIf="formData.type === 'External'">
               <label class="block text-base font-medium text-[#212529] mb-2"
-                >Description</label
+                >URL</label
               >
-              <textarea
-                [(ngModel)]="formData.description"
-                rows="6"
-                placeholder="Enter description..."
-                class="w-full px-4 py-3 border border-[#CED4DA] rounded placeholder:text-[#C2C3CB] text-base focus:outline-none focus:border-[#009FD8] transition-colors resize-none"
-              ></textarea>
+              <input
+                type="url"
+                [(ngModel)]="formData.url"
+                placeholder="Enter Location"
+                class="w-full h-[50px] px-5 border-2 border-[#E9EBEC] rounded placeholder:text-[#C2C3CB] text-base focus:outline-none focus:border-[#009FD8] transition-colors"
+              />
             </div>
 
-            <!-- Featured Images Field -->
-            <div>
+            <!-- Featured Images Field (shown only for External type) -->
+            <div *ngIf="formData.type === 'External'">
               <label class="block text-base font-medium text-[#212529] mb-2"
                 >Featured Images</label
               >
@@ -250,6 +260,19 @@ import { FormsModule } from "@angular/forms";
                   >{{ img }}</span
                 >
               </div>
+            </div>
+
+            <!-- Description Field (shown for all types) -->
+            <div *ngIf="formData.type === 'Standard'">
+              <label class="block text-base font-medium text-[#212529] mb-2"
+                >Description</label
+              >
+              <textarea
+                [(ngModel)]="formData.description"
+                rows="6"
+                placeholder="Enter description..."
+                class="w-full px-4 py-3 border border-[#CED4DA] rounded placeholder:text-[#C2C3CB] text-base focus:outline-none focus:border-[#009FD8] transition-colors resize-none"
+              ></textarea>
             </div>
           </div>
         </div>
@@ -321,6 +344,7 @@ export class AddInformationModalComponent {
         title: data.title || "",
         floorPlanFor: data.floorPlanFor || "",
         type: data.type || "",
+        url: data.url || "",
         description: data.description || "",
         profileImage: data.profileImage || "",
         featuredImages: data.featuredImages || [],
@@ -335,6 +359,7 @@ export class AddInformationModalComponent {
     title: "",
     floorPlanFor: "",
     type: "",
+    url: "",
     description: "",
     profileImage: "",
     featuredImages: [] as string[],
@@ -403,6 +428,7 @@ export class AddInformationModalComponent {
       title: "",
       floorPlanFor: "",
       type: "",
+      url: "",
       description: "",
       profileImage: "",
       featuredImages: [],
