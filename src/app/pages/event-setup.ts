@@ -2290,7 +2290,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                           Speakers
                         </h2>
 
-                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                        <div
+                          class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto"
+                        >
                           <!-- Search Bar -->
                           <div class="relative w-full sm:w-[328px]">
                             <input
@@ -2357,7 +2359,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       <div
                         class="px-7 py-5 border-b border-[#CED4DA] bg-white hidden md:grid grid-cols-[60px_1fr_200px_200px_120px] gap-4"
                       >
-                        <div class="text-base font-semibold text-[#181C32] text-center">
+                        <div
+                          class="text-base font-semibold text-[#181C32] text-center"
+                        >
                           Sr. No
                         </div>
                         <div class="text-base font-semibold text-[#181C32]">
@@ -2375,7 +2379,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       </div>
 
                       <!-- Empty State -->
-                      <div class="py-20 flex flex-col items-center justify-center">
+                      <div
+                        class="py-20 flex flex-col items-center justify-center"
+                      >
                         <svg
                           class="mb-6"
                           width="80"
@@ -2389,11 +2395,16 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                             fill="#D0D0D0"
                           />
                         </svg>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-[#878A99] mb-2">
+                        <h3
+                          class="text-xl sm:text-2xl font-semibold text-[#878A99] mb-2"
+                        >
                           No Speakers Added Yet
                         </h3>
-                        <p class="text-sm sm:text-base text-[#686868] text-center max-w-md px-4">
-                          Click "Add Speakers" button to add speakers to your event
+                        <p
+                          class="text-sm sm:text-base text-[#686868] text-center max-w-md px-4"
+                        >
+                          Click "Add Speakers" button to add speakers to your
+                          event
                         </p>
                       </div>
                     </div>
