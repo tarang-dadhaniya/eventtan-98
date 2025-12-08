@@ -2984,6 +2984,8 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
     <app-add-sponsors-modal
       [isOpen]="isSponsorsModalOpen"
       [editMode]="editModeSponsor"
+      [eventId]="eventId"
+      [sponsorData]="editingSponsor"
       (close)="closeSponsorsModal()"
       (submit)="onSponsorSave($event)"
     ></app-add-sponsors-modal>
