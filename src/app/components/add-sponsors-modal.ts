@@ -749,7 +749,10 @@ import { FormsModule } from "@angular/forms";
               <label class="block text-base font-medium text-[#212529] mb-2">
                 Upload Documents
               </label>
+
+              <!-- Upload Area - Show when no files selected -->
               <div
+                *ngIf="formData.documentNames.length === 0"
                 class="border border-dashed border-[#B9BBBC] rounded p-8 text-center cursor-pointer hover:border-[#009FD8] transition-colors"
                 (click)="documentInput.click()"
                 (dragover)="onDragOver($event)"
@@ -781,92 +784,105 @@ import { FormsModule } from "@angular/forms";
                 />
               </div>
 
+              <!-- Selected Files Area - Show when files selected -->
               <div
                 *ngIf="formData.documentNames.length > 0"
-                class="mt-4 flex flex-wrap gap-[15px]"
+                class="border border-2 border-[#E9EBEC] rounded p-6"
               >
-                <div
-                  *ngFor="let docName of formData.documentNames; let i = index"
-                  class="relative w-[89px]"
-                >
-                  <div class="flex flex-col items-center pt-[9px]">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M20.3343 4.98131L15.8145 0.705281C15.3337 0.250453 14.7045 0 14.0427 0H5.4375C4.01592 0 2.85938 1.15655 2.85938 2.57812V21.4219C2.85938 22.8435 4.01592 24 5.4375 24H18.5625C19.9841 24 21.1406 22.8435 21.1406 21.4219V6.85416C21.1406 6.14873 20.8467 5.46609 20.3343 4.98131ZM18.9685 5.625H15.4688C15.3395 5.625 15.2344 5.51986 15.2344 5.39062V2.09231L18.9685 5.625ZM18.5625 22.5938H5.4375C4.79133 22.5938 4.26562 22.068 4.26562 21.4219V2.57812C4.26562 1.93195 4.79133 1.40625 5.4375 1.40625H13.8281V5.39062C13.8281 6.29527 14.5641 7.03125 15.4688 7.03125H19.7344V21.4219C19.7344 22.068 19.2087 22.5938 18.5625 22.5938Z"
-                        fill="#878A99"
-                      />
-                      <path
-                        d="M17.0156 9.375H6.70312C6.31481 9.375 6 9.68981 6 10.0781C6 10.4664 6.31481 10.7812 6.70312 10.7812H17.0156C17.4039 10.7812 17.7188 10.4664 17.7188 10.0781C17.7188 9.68981 17.4039 9.375 17.0156 9.375Z"
-                        fill="#878A99"
-                      />
-                      <path
-                        d="M17.0156 13.125H6.70312C6.31481 13.125 6 13.4398 6 13.8281C6 14.2164 6.31481 14.5312 6.70312 14.5312H17.0156C17.4039 14.5312 17.7188 14.2164 17.7188 13.8281C17.7188 13.4398 17.4039 13.125 17.0156 13.125Z"
-                        fill="#878A99"
-                      />
-                      <path
-                        d="M10.1119 16.875H6.70312C6.31481 16.875 6 17.1898 6 17.5781C6 17.9664 6.31481 18.2812 6.70312 18.2812H10.1119C10.5002 18.2812 10.815 17.9664 10.815 17.5781C10.815 17.1898 10.5002 16.875 10.1119 16.875Z"
-                        fill="#878A99"
-                      />
-                    </svg>
-                    <div
-                      class="text-[#212529] text-center font-medium text-sm mt-[10px] max-w-full overflow-hidden text-ellipsis whitespace-nowrap px-1"
-                      [title]="docName"
-                    >
-                      {{ docName }}
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    (click)="removeDocument(i)"
-                    class="absolute top-0 right-0 w-[18px] h-[18px] flex items-center justify-center hover:opacity-80 transition-opacity"
-                    title="Remove file"
+                <div class="flex flex-wrap gap-[15px]">
+                  <div
+                    *ngFor="let docName of formData.documentNames; let i = index"
+                    class="relative w-[89px]"
                   >
-                    <svg
-                      width="26"
-                      height="26"
-                      viewBox="0 0 26 26"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.07))"
-                    >
-                      <g>
-                        <circle cx="13" cy="13" r="9" fill="white" />
-                        <circle cx="13" cy="13" r="8.5" stroke="#878A99" />
-                      </g>
-                    </svg>
-                    <svg
-                      width="6"
-                      height="6"
-                      viewBox="0 0 6 6"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                    >
-                      <g clip-path="url(#clip0_close)">
+                    <div class="flex flex-col items-center pt-[9px]">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
-                          d="M0.30853 6.00002C0.229495 6.00002 0.15046 5.96995 0.0904116 5.90945C-0.0301372 5.7889 -0.0301372 5.59346 0.0904116 5.47292L5.47292 0.0904116C5.59346 -0.0301372 5.7889 -0.0301372 5.90945 0.0904116C6.03 0.21096 6.03 0.4064 5.90945 0.527024L0.527024 5.90945C0.466524 5.96958 0.387489 6.00002 0.30853 6.00002Z"
-                          fill="#686868"
+                          d="M20.3343 4.98131L15.8145 0.705281C15.3337 0.250453 14.7045 0 14.0427 0H5.4375C4.01592 0 2.85938 1.15655 2.85938 2.57812V21.4219C2.85938 22.8435 4.01592 24 5.4375 24H18.5625C19.9841 24 21.1406 22.8435 21.1406 21.4219V6.85416C21.1406 6.14873 20.8467 5.46609 20.3343 4.98131ZM18.9685 5.625H15.4688C15.3395 5.625 15.2344 5.51986 15.2344 5.39062V2.09231L18.9685 5.625ZM18.5625 22.5938H5.4375C4.79133 22.5938 4.26562 22.068 4.26562 21.4219V2.57812C4.26562 1.93195 4.79133 1.40625 5.4375 1.40625H13.8281V5.39062C13.8281 6.29527 14.5641 7.03125 15.4688 7.03125H19.7344V21.4219C19.7344 22.068 19.2087 22.5938 18.5625 22.5938Z"
+                          fill="#878A99"
                         />
                         <path
-                          d="M5.69141 6.00002C5.61238 6.00002 5.53342 5.96995 5.47329 5.90945L0.0904116 0.527024C-0.0301372 0.4064 -0.0301372 0.21096 0.0904116 0.0904116C0.21096 -0.0301372 0.4064 -0.0301372 0.527024 0.0904116L5.90945 5.47292C6.03 5.59346 6.03 5.7889 5.90945 5.90945C5.84895 5.96958 5.76999 6.00002 5.69141 6.00002Z"
-                          fill="#686868"
+                          d="M17.0156 9.375H6.70312C6.31481 9.375 6 9.68981 6 10.0781C6 10.4664 6.31481 10.7812 6.70312 10.7812H17.0156C17.4039 10.7812 17.7188 10.4664 17.7188 10.0781C17.7188 9.68981 17.4039 9.375 17.0156 9.375Z"
+                          fill="#878A99"
                         />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_close">
-                          <rect width="6" height="6" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </button>
+                        <path
+                          d="M17.0156 13.125H6.70312C6.31481 13.125 6 13.4398 6 13.8281C6 14.2164 6.31481 14.5312 6.70312 14.5312H17.0156C17.4039 14.5312 17.7188 14.2164 17.7188 13.8281C17.7188 13.4398 17.4039 13.125 17.0156 13.125Z"
+                          fill="#878A99"
+                        />
+                        <path
+                          d="M10.1119 16.875H6.70312C6.31481 16.875 6 17.1898 6 17.5781C6 17.9664 6.31481 18.2812 6.70312 18.2812H10.1119C10.5002 18.2812 10.815 17.9664 10.815 17.5781C10.815 17.1898 10.5002 16.875 10.1119 16.875Z"
+                          fill="#878A99"
+                        />
+                      </svg>
+                      <div
+                        class="text-[#212529] text-center font-medium text-sm mt-[10px] max-w-full overflow-hidden text-ellipsis whitespace-nowrap px-1"
+                        [title]="docName"
+                      >
+                        {{ docName }}
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="removeDocument(i)"
+                      class="absolute top-0 right-0 w-[18px] h-[18px] flex items-center justify-center hover:opacity-80 transition-opacity"
+                      title="Remove file"
+                    >
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.07))"
+                      >
+                        <g>
+                          <circle cx="13" cy="13" r="9" fill="white" />
+                          <circle cx="13" cy="13" r="8.5" stroke="#878A99" />
+                        </g>
+                      </svg>
+                      <svg
+                        width="6"
+                        height="6"
+                        viewBox="0 0 6 6"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                      >
+                        <g clip-path="url(#clip0_close)">
+                          <path
+                            d="M0.30853 6.00002C0.229495 6.00002 0.15046 5.96995 0.0904116 5.90945C-0.0301372 5.7889 -0.0301372 5.59346 0.0904116 5.47292L5.47292 0.0904116C5.59346 -0.0301372 5.7889 -0.0301372 5.90945 0.0904116C6.03 0.21096 6.03 0.4064 5.90945 0.527024L0.527024 5.90945C0.466524 5.96958 0.387489 6.00002 0.30853 6.00002Z"
+                            fill="#686868"
+                          />
+                          <path
+                            d="M5.69141 6.00002C5.61238 6.00002 5.53342 5.96995 5.47329 5.90945L0.0904116 0.527024C-0.0301372 0.4064 -0.0301372 0.21096 0.0904116 0.0904116C0.21096 -0.0301372 0.4064 -0.0301372 0.527024 0.0904116L5.90945 5.47292C6.03 5.59346 6.03 5.7889 5.90945 5.90945C5.84895 5.96958 5.76999 6.00002 5.69141 6.00002Z"
+                            fill="#686868"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_close">
+                            <rect width="6" height="6" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
+
+              <!-- Hidden file input for both upload and file selection -->
+              <input
+                #documentInput
+                type="file"
+                accept=".pdf,.doc,.docx"
+                multiple
+                class="hidden"
+                (change)="onDocumentChange($event)"
+              />
             </div>
           </div>
 
