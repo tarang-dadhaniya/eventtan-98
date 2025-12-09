@@ -10,7 +10,7 @@ export interface GalleryImage {
   thumbnailImageUrl?: string;
   imageGalleryFor?: string;
   viewMoreUrl?: string;
-  productImageUrl?: string;
+  productImageUrls?: string[];
   createdAt: string;
 }
 
