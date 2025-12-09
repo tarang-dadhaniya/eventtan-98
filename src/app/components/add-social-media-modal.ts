@@ -199,9 +199,9 @@ import { FormsModule } from "@angular/forms";
 
               <div [class.space-y-[30px]]="!editMode" [class.mt-[31px]]="editMode">
                 <!-- Blog/Rss URL -->
-                <div *ngIf="formData.socialMedia.blogRss" class="relative">
+                <div *ngIf="formData.socialMedia.blogRss" class="relative" w-[50px] h-[50px]>
                   <div
-                    class="absolute left-0 top-0 w-[50px] h-[50px] bg-[#F5F5F5] rounded-l flex items-center justify-center pointer-events-none z-10"
+                    class="absolute left-0 top-0  bg-[#F5F5F5] rounded-l flex items-center justify-center pointer-events-none z-10"
                   >
                     <svg
                       width="22"
