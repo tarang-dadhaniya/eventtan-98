@@ -3320,9 +3320,7 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                                 fill="#CED4DA"
                               />
                             </svg>
-                            <p
-                              class="text-lg font-medium text-[#686868] mb-2"
-                            >
+                            <p class="text-lg font-medium text-[#686868] mb-2">
                               No Testimonials Added
                             </p>
                             <p class="text-sm text-[#878A99]">
@@ -3346,7 +3344,8 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       activeFeatures[selectedFeatureIndex] !== 'speakers' &&
                       activeFeatures[selectedFeatureIndex] !== 'sponsors' &&
                       activeFeatures[selectedFeatureIndex] !== 'social-media' &&
-                      activeFeatures[selectedFeatureIndex] !== 'image-gallery' &&
+                      activeFeatures[selectedFeatureIndex] !==
+                        'image-gallery' &&
                       activeFeatures[selectedFeatureIndex] !== 'testimonials'
                     "
                     class="flex flex-col items-center justify-center py-16 text-center"
