@@ -80,6 +80,7 @@ import { WebView } from "../services/web-view.service";
                   </option>
                   <option value="Mobile">Mobile</option>
                   <option value="Web">Web</option>
+                  <option value="Both">Both</option>
                 </select>
                 <div
                   class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none"
