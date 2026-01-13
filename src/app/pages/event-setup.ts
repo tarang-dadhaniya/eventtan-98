@@ -3648,7 +3648,7 @@ export class EventSetupComponent implements OnInit {
   information: Information[] = [];
   sponsors: Sponsor[] = [];
   socialMediaList: SocialMediaEntry[] = [];
-  testimonialsList: any[] = [];
+  testimonialsList: Testimonial[] = [];
   galleryImages: GalleryImage[] = [];
   searchQuery: string = "";
   editMode = false;
